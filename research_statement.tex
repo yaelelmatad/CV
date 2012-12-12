@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\usepackage[left=1.5cm,top=1.5cm,right=1.5cm,bottom=1.5cm]{geometry}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
 \geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
 %\geometry{landscape}                % Activate for for rotated page geometry
 %\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
@@ -55,7 +55,7 @@
  \def\dsp{\def\baselinestretch{2.0}\large\normalsize}
 %\dsp
 
-\title{{New techniques for the study of glass formers and the design of self-assembling nanomaterials}}
+\title{{Out of equilibrium dynamical systems, the path from A to B.}}
 \author{Yael S. Elmatad}
 \date{}                                           % Activate to display a given date or no date
 \begin{document}
@@ -65,10 +65,21 @@
 %\includepdf[pages=-]{pdfpages.pdf}
 %\section{Long-Term Objectives}
 \begin{abstract}
-Glassy materials have wide ranges of applications, including nuclear storage~\cite{Sales1984}, cryobiology~\cite{Lemler2004}, and pharmaceuticals~\cite{Craig1999}. Understanding glassy phenomena would lead to advancements in these fields, such as extending the life of organs for transplant~\cite{Lemler2004} and improving the safe long-term storage of nuclear waste~\cite{Sales1984}.  However, a strong impediment to the effective design of glassy materials with desired properties is the lack of a detailed understanding of the very nature of the glass transition, and whether it is thermodynamic or kinetic in origin. Our earlier work, utilizing an advanced trajectory sampling technique called transition path sampling (TPS)~\cite{Bolhuis_AnnuRevPhysChem_2002}, has taught us a great deal about the origin of the glass transition in model glass formers. However, new techniques are still needed to improve the sampling of realistic glass models as well as to design new materials that are glassy~\cite{Whitesides2002}. Current methods involve scanning parameter space by trial and error and conducting long, time-consuming simulations of material formation for each trial parameter set. Here, I propose a method which optimizes parameters for a given model based on path probabilities for a transition path ensemble.  This method circumvents these problems by making forays in thermodynamic parameter space and extends the technique of parallel tempering to allow for sampling in both trajectory and parameter space.  These techniques will also facilitate the engineering of synthetic self-assembling nanomaterials, which have applications to drug delivery~\cite{Rosler2001} and new materials~\cite{Whitesides2002}.   Moreover, I believe these methods have wide applicability to related sampling and optimization problems.
+In recent work, we have shown how to understand the properties of a slow, out-of-equilibrium system by studying dynamical properties -- namely an ensemble of trajectories.  These studies were two pronged, first they involved physical insight into the basic nature of glassy systems as well as development of methods to study such ensembles of trajectories.  The true nature of glasses is far from being agreed upon, but progress in this arena have allowed us to bridge gaps between various methods of calculating thermodynamic and dynamic properties towards a unified picture of supercooled liquids.  In this statement I propose to further this work not only to study glasses but also to extend the methods developed to study these systems to other systems such as the biophysical problem of crowded cellular environments.  Moroever, beyond applying these methods, I further propose to extend these methods even further, thus allowing us to not only learn more information about the physical world we live in but also gain new ways to engineer models and novel materials to preform desired behaviors.
+
+%Glassy materials have wide ranges of applications, including nuclear storage~\cite{Sales1984}, cryobiology~\cite{Lemler2004}, and pharmaceuticals~\cite{Craig1999}. Understanding glassy phenomena would lead to advancements in these fields, such as extending the life of organs for transplant~\cite{Lemler2004} and improving the safe long-term storage of nuclear waste~\cite{Sales1984}.  However, a strong impediment to the effective design of glassy materials with desired properties is the lack of a detailed understanding of the very nature of the glass transition, and whether it is thermodynamic or kinetic in origin. Our earlier work, utilizing an advanced trajectory sampling technique called transition path sampling (TPS)~\cite{Bolhuis_AnnuRevPhysChem_2002}, has taught us a great deal about the origin of the glass transition in model glass formers. However, new techniques are still needed to improve the sampling of realistic glass models as well as to design new materials that are glassy~\cite{Whitesides2002}. Current methods involve scanning parameter space by trial and error and conducting long, time-consuming simulations of material formation for each trial parameter set. Here, I propose a method which optimizes parameters for a given model based on path probabilities for a transition path ensemble.  This method circumvents these problems by making forays in thermodynamic parameter space and extends the technique of parallel tempering to allow for sampling in both trajectory and parameter space.  These techniques will also facilitate the engineering of synthetic self-assembling nanomaterials, which have applications to drug delivery~\cite{Rosler2001} and new materials~\cite{Whitesides2002}.   Moreover, I believe these methods have wide applicability to related sampling and optimization problems.
 \end{abstract}
 
-\section*{Aims}
+%\section*{Aims}
+\section{The Glass Transition}
+Supercooled liquids and the glass transition are a much debated and poorly understood physical phenomenon.  The nature of supercooled liquids is inherently out of equilibrium as the equilibrium state (crystalline solid) is avoided by a slow cooling protocol that frustrates the previous in-equilibrium liquid.  In recent work, we have shown how its possible to take a wide range of experimental data for fragile molecular glass former transport properties and collapse it onto a single curve. Many of the data taken on supercooled liquids originate from measurements that involve probe particles - guest particles that are used as 'thermometers' for their host liquid which can be used as recorders of transport properties as well as dynamic heterogeneity.  One behavior that has yet to be fully understood is to what extent these probes can record useful information about their host solvents.  Conventionally, probe particles are generally made to be as inconspicuous as possible to mimic the behavior of the host.  I would like to investigate to what extent that can be pushed.  For example, can the probe size be swelled until the probe is on the order of the size of dynamic heterogeneities.   Once the probe size is of that order it should recover the mean field behavior of an average liquid -- for example, the diffusion constant and the relaxation time should be coupled as per the Stokes-Einstein equation once again. I intend to study the effects of probe particles on host liquids by use of molecular dynamics and Monte-Carlo simulations of glass-formers.  Through these studies, it can be understood to what extent the probe particle can be used as a molecular thermometer for the host and, moreover, to what extent and in what regime does the probe actually disturb the normal dynamics of the host liquid.  
+
+\section{Crowded Environments}
+Recently, many have touted the analogy between crowded cellular environments and the colloidal glass transition.  By increasing the osmotic pressure of the cell experimenters were able to 'jam' the interior environment cells, just as they would a dense colloidal or granular material.  While this pressure was applied in a laboratory, this increase in pressure is also felt during rapid tumor formation as cells become more and more densely packed due to rapidly dividing cells.  Since cells are crowded out of equilibrium environments they share many features with supercooled liquids -- also dense packings of molecules, only a different scale.  Recent numerical work and simulation technique advances have been used to shed light on elementary motion in such supercooled environments.  By exploiting the similarity, large molecular simulations of a dense cellular work coupled with new techniques can be used to further study basic motion of small proteins as they diffuse in such a crowded environment.  These simulations would use techniques of transition path sampling to characterize the ensemble of possible moves as a protein escapes its environment by exiting it's cage.  Questions about the nature of these motions -- and to what extend they resemble the facilitated motions in granular and colloidal materials -- would help us understand the physical environment of the biological material that makes up a cell. 
+Internal cellular materials are not the only biological phenomenon which are analogous to jammed materials.  Recnet work in microfluidic devices have shown how sickle-cell disease manifests itself when cells change their shape and form clots is small chambers (veins).  The geometry of the cells as they "sickle" has been shown to play an important role in acute attacks of the disease.  Understanding basic elementary processes about how clots form and break apart can be of use to creating new treatment for the disease.  For example, it has been shown that a small molecular inhibitor can be used to break up such clots, however that inhibitor was carbon monoxide -- a toxic chemical.  Molecular simulation may be useful in understand what kind of guest molecules would be best and preventing and treating these clots.  Perhaps by elucidating which size and shape molecules can be used to frustrate the formation of such clots.
+
+\section{Sampling Methods}
+
 In a recent interview, when asked what the greatest challenges for computational materials science is, pioneering researcher Michele Parrinello stated that ``...sampling is really the most important aspect to be improved...'' \cite{Parrinello2010}.
 To that end, I propose two new methods to improve sampling and design in materials.  The first aim of this work is to use a new parameter space sampling technique to investigate ensembles of trajectories.  This method would investigate rare events in complex dynamical systems with increased computational efficiency. The second aim is to use a novel method to optimize parameters to select for a certain dynamical behavior.  This second technique would allow us to engineer models which strike a balance between thermodynamics and dynamics.  Both methods have applications for studying glass formers, biophysics, and designing novel materials.
 
@@ -83,12 +94,12 @@ To investigate the dynamics of glass formers, my colleagues and I have been stud
 \subsection*{Ensembles of trajectories using TPS showcase the nature of KCMs}
 Using this model, we previously studied the dynamical ensemble (i.e., the ensemble of trajectories) rather than a static ensemble (i.e., the ensemble of configurations).  We found that this model undergoes a dynamic first-order phase transition. That is, there is a discontinuity in an order parameter, $K$, which measures the ``activity'' in the model (in our case, the number of configuration changes) which is coupled to a dynamical field $s$.  This behavior was qualitatively demonstrated for atomistic models \cite{Hedges_Science_2009} as well.  Upon mild constraint softening, the first-order dynamical phase transition does persist, though eventually the system goes through a critical point and then finally into a one-phase region which approaches a lattice gas \cite{Elmatad_PNAS_2010}.  This dynamical phase transition is highlighted in Figure \ref{fig:softFA} alongside a phase diagram in the $s$ and $\epsilon$ plane. $\epsilon$ is the measure of ``softness'': $\epsilon=0$ is the pure FA model and $\epsilon \rightarrow \infty$ recovers the lattice gas. 
 
-\begin{figure}[b!] %  figure placement: here, top, bottom, or page
-   \centering
-   \includegraphics[width=5in]{softFA.pdf} 
-   \caption{Example of a dynamical phase transition in the soft FA model. $\langle k \rangle_{s}$ is the intensive equivalent of $K$, where $k$ is the activity per space-time unit volume.  (a) shows the phase diagram in the $\epsilon$, $s$ plane.  Inset shows the probability distribution at a value of $s$ indicated by the dots in the phase diagram. (b) shows $\langle k \rangle_{s}$ as a function of $s$ at the same state points as the inset of (a) and the dots indicated in (a).  Labeling and colors are the same throughout.  For more, see \cite{Elmatad_PNAS_2010}.}
-   \label{fig:softFA}
-\end{figure}
+%\begin{figure}[b!] %  figure placement: here, top, bottom, or page
+%   \centering
+ %  \includegraphics[width=5in]{softFA.pdf} 
+ %  \caption{Example of a dynamical phase transition in the soft FA model. $\langle k \rangle_{s}$ is the intensive equivalent of $K$, where $k$ is the activity per space-time unit volume.  (a) shows the phase diagram in the $\epsilon$, $s$ plane.  Inset shows the probability distribution at a value of $s$ indicated by the dots in the phase diagram. (b) shows $\langle k \rangle_{s}$ as a function of $s$ at the same state points as the inset of (a) and the dots indicated in (a).  Labeling and colors are the same throughout.  For more, see \cite{Elmatad_PNAS_2010}.}
+%   \label{fig:softFA}
+%\end{figure}
 
 To investigate behaviors of rare events (such as the formation of low-activity trajectories), we have used advanced sampling methods developed to study ensembles of trajectories. The most significant of these was transition path sampling (TPS) \cite{Bolhuis_AnnuRevPhysChem_2002}.  This method has allowed people to probe a diverse set of dynamical problems from supercooled liquid dynamics \cite{Merolle_PNAS_Aug_2005} to biological self-assembly \cite{TenWolde2002}. While current methods can investigate trajectory space for fixed parameters very well, few techniques exist which allow for crossing large barriers  in parameter space. Traversing dynamical barriers in trajectory space suffers the same pitfalls as traversing barriers in configurations space: barriers in space-time can prove too high to climb in a given parameter set, meaning that important regions of trajectory space may go unexplored.  If this is the case, the TPS ensemble will be poorly converged and may not reflect the true nature of the underlying dynamical free energy landscape. In fact, even with our simple models, straightforward sampling led to a large number of rejected trajectories.
 
@@ -105,12 +116,12 @@ The simplest way to extend this method to trajectories is to make the analogy to
 \subsection*{Efficient self-assembly of nanoparticles requires optimization}
 In the past two decades, nanoparticles and their applications have come to the forefront of scientific consciousness \cite{Glotzer2007}.  Many of these nanoparticles can be used for self-assembly: they spontaneously form aggregated complex structures.  Many believe that the future will hold a wide array of uses for particles capable of self-assembly.  Some have speculated that they will be useful for targeted drug delivery \cite{Rosler2001}, optics \cite{Jiang2007}, and surfactants \cite{Glotzer2007}.  The exact structure of the final, assembled, group depends on the interactions between the nanoparticles and how those interactions dictate kinetic pathways to assembly. It has been noted that interactions should be strong but {\it not too strong} so that an unassembled system has enough time and energy to bind but also to anneal out defects \cite{Hagan2006, Whitelam2008}.  Unfortunately, targeted computational methods that optimize specified assembly pathways (and final structures) at viable conditions are not yet known. 
 
-\begin{figure}[b!] %  figure placement: here, top, bottom, or page
-   \centering
-   \includegraphics[width=5in]{flowchart.pdf} 
-   \caption{Flow diagram for proposed dynamic tempering algorithm.  Blue boxes indicate steps which are significantly different from the usual TPS scheme with dynamic order parameter, $K$, and field, $s$. Shooting and shifting are the elementary moves of perturbing trajectories in TPS \cite{Bolhuis_AnnuRevPhysChem_2002}.}
-   \label{fig:flow}
-\end{figure}
+%\begin{figure}[b!] %  figure placement: here, top, bottom, or page
+ %  \centering
+%   \includegraphics[width=5in]{flowchart.pdf} 
+%   \caption{Flow diagram for proposed dynamic tempering algorithm.  Blue boxes indicate steps which are significantly different from the usual TPS scheme with dynamic order parameter, $K$, and field, $s$. Shooting and shifting are the elementary moves of perturbing trajectories in TPS \cite{Bolhuis_AnnuRevPhysChem_2002}.}
+%   \label{fig:flow}
+%\end{figure}
 
 
 
@@ -134,13 +145,13 @@ Here, the first factor is the dynamical order parameter equivalent to accepting 
 \subsection*{Test Cases for the First Stage: KCMs}
 To test the effectiveness method,  I will use kinetically constrained models of glass formers.  Specifically, I will test the method using the East \cite{Ritort_AdvInPhys_2003} and the FA model using a trajectory biasing field, $s$.  While the 1d FA model has been well characterized \cite{Garrahan_JPhysA_2008, Elmatad_PNAS_2010}, the hierarchical East model has not been studied in the context of a dynamical phase transition and studying the nature of this expected transition would add new knowledge to the field.  Since the theory \cite{Garrahan2003} which has successfully predicted glass universality~\cite{Elmatad2009} is based on hierarchical modelsthis phase transition is of particular interest. 
 
-\section*{Second Stage: Using Trajectory Space to Optimize Parameters}
-\begin{figure}[b!] %  figure placement: here, top, bottom, or page
-   \centering
-   \includegraphics[width=5in]{flowchart_part2.pdf} 
-   \caption{Flow diagram for second phase.  Blue boxes indicate departures from usual transition ensemble harvesting methods.}
-   \label{fig:flow2}
-\end{figure}
+%\section*{Second Stage: Using Trajectory Space to Optimize Parameters}
+%\begin{figure}[b!] %  figure placement: here, top, bottom, or page
+ %  \centering
+  % \includegraphics[width=5in]{flowchart_part2.pdf} 
+  % \caption{Flow diagram for second phase.  Blue boxes indicate departures from usual transition ensemble harvesting methods.}
+   %\label{fig:flow2}
+%\end{figure}
 
 
 In the second phase, we will use an ensemble of trajectories to optimize parameters that select for a particular behavior in a system with two basins, $A$ and $B$.  An example of such a system would be a self-assembly process where $A$ is an unassembled state and $B$ is an assembled state.  We seek to optimize the probability of seeing a trajectory that goes from $A$ to $B$ given that the trajectory starts in $A$; that is, optimize $P(A\rightarrow B | A)$.  The proposed steps are as follows: 
@@ -159,8 +170,8 @@ To test this method, I will investigate self-assembly of Janus particles using B
 
 \section*{Long Term Goals}
 These methods would help us understand the link between parameter and trajectory space.  For glass formers, I plan to investigate the links between biased trajectory ensembles and driven systems \cite{Speck2010}. Such connections are tantalizing because they are essential to the idea of facilitation. This would suggest that a link between a biasing field, $s$, in trajectory space and an experimentally measurable system can be found.  In the long term, I hope to use these methods to study the properties of dynamic facilitation since the methods will make simulating complex models more computationally feasible. My other goal is to  design novel materials by understanding self-assembly optimization - such as in the formation of Janus particles into various ordered structures \cite{Glotzer2007}.   The potential to design materials which preform a specified function but whose optimal parameters are not known {\it a priori} is one of the holy grails of theoretical research.  I hope these two methods - and the understanding which comes from employing them - will help make significant advancements in these fields, allowing me to add an increased understanding of the interplay between dynamics and thermodynamics to the scientific community.
-\bibliography{library}
+%\bibliography{library}
 
-\bibliographystyle{Science}
+%\bibliographystyle{Science}
 
 \end{document}  

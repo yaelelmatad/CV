@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{ulem}
+\usepackage[draft]{pdfpages}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\def \dbar{{\mathchar'26\mkern-12mu d}}
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\traj}{\text{traj}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\tobs}{t_\mathrm{obs}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\sig}{\sigma}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathcal{F}}
+
+\newcommand{\rate}{\lambda}
+\newcommand{\upr}{\gamma}
+
+\newcommand{\zz}{\ee^{-s}}
+\newcommand{\zzs}{\ee^{-s^*}}
+
+\newcommand{\Sc}{S}
+
+\renewcommand{\figurename}{\textbf{Figure}}
+
+% Different font in captions
+\newcommand{\captionfonts}{\small}
+
+\makeatletter  % Allow the use of @ in command names
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{{\captionfonts #1: #2}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\captionfonts #1: #2\par}
+  \else
+    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+\makeatother   % Cancel the effect of \makeatletter
+
+\renewcommand{\abstractname}{Summary}
+
+ \def\dsp{\def\baselinestretch{2.0}\large\normalsize}
+%\dsp
+
+\title{{Teaching Statement}}
+\author{Yael S. Elmatad}
+\date{}                                           % Activate to display a given date or no date
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+%\includepdf[pages=-]{pdfpages.pdf}
+%\section{Long-Term Objectives}
+
+\section{Teaching Background}
+
+As an NYU Faculty Fellow/Postdoctoral Fellow I have had the unique experience of being allowed to teach during my postdoctoral work.  As such I have been holding court over the upper level undergraduate physics courses of Statistical Physics and Quantum Mechanics I.  Both integral courses to a young physicist's formation.  As such, I have found this work to be a challenge I am willing to accept. These classes are required courses for physics majors and generally there are about 30 students enrolled in each of these courses.  I am the main faculty assigned to these courses and I teach them with the help of one graduate teaching assistant.    I have had to learn how to deal with not only the material but how to fairly write exams (not too hard or easy, not too long or short) and how to convey information in a way that allows students with varied backgrounds to understand the material.  After my first semester of teaching, my reviews came back and 11 of the 12 responding students said they would recommend me asx an instructor to a friend.
+
+Up until my postdoctoral work, my education and teaching experience has been mostly in Chemistry departments.  However, my education has always been on the very physical side of chemistry.  As an undergraduate at NYU I even petitioned to replace one of my chemistry electives with an extra physics course (Classical Mechanics).  At NYU, I also took additional coursework in both Mathematics and Computer Science.  As a a sophomore undergraduate I was already leading general chemistry clinic sections.  By Junior year I was one of the two Physical Chemistry teaching assistants, teaching both semesters (Quantum mechanics, statistical mechanics, thermodynamics, gas kinetics, etc...) while still enrolled in a variety of upper level coursework myself.
+
+In graduate school at UC Berkeley, I was a teaching assistant for three semesters.  My first semester, I was selected among all the incoming graduate students to teach laboratory portion of the General Chemistry for majors (rather than non majors). I then went on to teach the upper level Physical Chemistry Thermodynamics/Statistical Mechanics course.  For my work as a teaching assistant in that course I was awarded a Teaching Award by the department and received reviews stating that I was the best teaching assistant my students had ever had.  My fourth year, I was selected to be the teaching assistant for the graduate level statistical mechanics course in the chemistry department.
+
+\section{Teaching Tools and Philosophy}
+
+Throughout my teaching work I have strived to make the material both accessible and relatable.  One strategy that I have used is to include modern research into my teaching assignments.  In statistical physics, I must go through all the different kinds of Engines -- something that seems archaic to most students (and instructors!).  However, a recent article in Nature Physics about a one-particle Stirling engine shows how even this mundane topic can be made interesting and is on the cutting edge of scientific discovery.  In my Quantum, I class I introduced the Einstein-Rosen-Podolsky paradox, Bell's inequality, and highlighted several papers (all within the past year) on quantum entanglement and quantum communication.
+
+Moreover, as a computational chemical physicist, I know the power of computing in modern science.  Students who can harness computational tools are at a deep advantage over those who shy away from it  -- wether they choose to go into theory \emph{or} experiment.  As a graduate teaching assistant at Berkeley I was charged with introducing my students to the basics of programming (in C++) so they could learn to run simple Monte Carlo simulations.  This Spring, I intend to do the same with my undergraduate physics students only this time I will teach them Python, a slightly more modern language.
+
+I believe integrating modern research and techniques (such as computer simulation) makes my courses more enriching to students who realize that what I am teaching them allows them access to some of the most new and modern ways of looking at the world, and not just lip service to the past.
+
+\section{Future} %section to edit depending on application
+
+My diverse background makes me suitable at teaching a wide variety of courses across several departments.  My favorite courses are those close to my research background such as those that deal with Thermodynamics, Statistical Mechanics, and Mathematical Methods.  However, my experience and teaching also makes me suitable for a wide variety of other courses such as General Chemistry and Physics, Quantum Mechanics, Biophysics, Condensed Matter, and Classical Mechanics.
+
+Moreover, I would love the opportunity to design new and exciting course work.  For example, a course on non equilibrium statistical mechanics and simulation methods that includes cutting edge work on out of equilibrium and dynamical systems such as the Jarzynski inequality and Crooks fluctuation theorems as well as rare event path sampling methods developed to study dynamical processes and slow systems.
+
+\section{At CUNY} %section to edit depending on application
+
+At an undergraduate level I could teach the majority of physics courses for both majors and non majors such as Ideas in Physics, General Physics, Elementary Physics, any of the Honors courses, any of the Quantum Mechanics courses (such as the QM for Applied Engineers), Biophysics, Mechanics I \& II, Thermodynamics and Statistical Physics, Kinetic Theory and Statistical Mechanics, The Physics and Chemistry of Materials, The Physical Universe, Science I \& II, Development and Analysis of Ideas in Classical Science, as well as Development and Analysis of Ideas in Contemporary Science.
+
+At the graduate level I would be more than comfortable teaching any level of Statistical Mechanics, Quantum Mechanics I, Mathematical Methods in Physics, Computational Methods in Physics, and Biophysics.
+
+\end{document}  

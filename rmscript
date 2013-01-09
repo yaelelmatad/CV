@@ -1,0 +1,9 @@
+
+rm research_statement.synctex.gz
+rm research_statement.log
+rm research_statement.aux
+
+rm teaching_statement.synctex.gz
+rm teaching_statement.log
+rm teaching_statement.aux
+

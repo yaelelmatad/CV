@@ -1,0 +1,677 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NOTE: If you find that it says                                     %%
+%%                                                                    %%
+%%                           1 of ??                                  %%
+%%                                                                    %%
+%% at the bottom of your first page, this means that the AUX file     %%
+%% was not available when you ran LaTeX on this source. Simply RERUN  %%
+%% LaTeX to get the ``??'' replaced with the number of the last page  %%
+%% of the document. The AUX file will be generated on the first run   %%
+%% of LaTeX and used on the second run to fill in all of the          %%
+%% references.                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}%
+        {\vspace{-\baselineskip}\begin{list}{}{%
+       \setlength{\leftmargin}{\bibhang}%
+       \setlength{\itemindent}{-\leftmargin}%
+       \setlength{\itemsep}{\bibsep}%
+       \setlength{\parsep}{\z@}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+%% This gives us fun enumeration environments. compactitem will be nice.
+\usepackage{paralist}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+%
+% Usage: \makeheading{name}
+%
+% Place at top of document. It should be the first thing.
+\newcommand{\makeheading}[1]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+                {\large \bfseries #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+% The section headings
+%
+% Usage: \section{section name}
+%
+% Follow this section IMMEDIATELY with the first line of the section
+% text. Do not put whitespace in between. That is, do this:
+%
+%       \section{My Information}
+%       Here is my information.
+%
+% and NOT this:
+%
+%       \section{My Information}
+%
+%       Here is my information.
+%
+% Otherwise the top of the section header will not line up with the top
+% of the section. Of course, using a single comment character (%) on
+% empty lines allows for the function of the first example with the
+% readability of the second example.
+\renewcommand{\section}[2]%
+        {\pagebreak[2]\vspace{1.3\baselineskip}%
+         \phantomsection\addcontentsline{toc}{section}{#1}%
+         \hspace{0in}%
+         \marginpar{
+         \raggedright \scshape #1}#2}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{compactitem}[#1]}{\end{compactitem}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{compactitem}[#1]}
+        {\end{compactitem}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[2]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{\Large{Yael S.~Elmatad}}
+
+\section{Contact Information}
+%
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{2.5in}%
+%
+
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+New York University & \\
+Department of Physics   & \textit{Office:} (212) 998-7720 \\
+4 Washington Place Office 610&    \textit{E-mail:}
+\href{mailto:yael@nyu.edu}{yael@nyu.edu}\\
+New York, NY 10003     & \textit{Web:}
+\href{http://files.nyu.edu/yse200/public}{http://files.nyu.edu/yse200/public}\\
+\end{tabular}
+
+%\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+%\href{http://chemistry.berkeley.edu/}%
+%     {College of Chemistry} & \\
+%\href{http://www.berkeley.edu/}{The University of California, Berkeley}
+%                           & \textit{Office:} (510) 643-7128 \\
+%c/o Chandler Group           & \textit{Fax:} (510) 643-1566 \\
+%39 Gilman Hall; Department of Chemistry           & \textit{E-mail:}
+%\href{mailto:yael.elmatad@berkeley.edu}{yael.elmatad@berkeley.edu}\\
+%Berkeley, CA 94720 USA    & \textit{Web:}
+%\href{http://gold.cchem.berkeley.edu/~yael/}{http://gold.cchem.berkeley.edu/$\sim$yael}\\
+%\end{tabular}
+
+\section{Citizenship}
+%
+USA
+
+%\section{Research Interests}
+%
+%Supercooled liquids, out of equilibrium systems, large deviation functions, dynamical phase transitions, amorphous material, statistical mechanics, transition path sampling methods, slow dynamics, glasses, metastability, rare events
+%
+
+\section{Education}
+%
+\href{http://www.berkeley.edu/}{\textbf{University of California, Berkeley}},
+Berkeley, CA USA
+\begin{outerlist}
+
+\item[] Ph.D.,
+        \href{http://chemistry.berkeley.edu/}
+             {Physical Chemistry},
+             August 2011
+        \begin{innerlist}
+        \item Thesis Title: \emph{Analysis \& Simulation of Dynamics in Supercooled Liquids}
+        \item Research Adviser:
+              \href{http://gold.cchem.berkeley.edu}
+                   {Professor David Chandler}
+        \item Research: Statistical physics of supercooled liquids from analysis of experimental data to simulations and analytics of kinetically constrained lattice models of glassformers.
+	\\       
+        \end{innerlist}
+\end{outerlist} 
+
+\href{http://www.nyu.edu/}{\textbf{New York University}}, \href{http://cas.nyu.edu/}{\emph{College of Arts \& Science}},
+New York, NY USA
+\begin{outerlist}
+\item[] B.S.,
+        \href{http://chemistry.fas.nyu.edu/}
+             {Chemistry}, May 2006
+        \begin{innerlist}
+        \item College of Arts \& Science Valedictorian
+        \item \emph{Summa cum Laude}, with University and Departmental Honors
+        \item Minor in \href{http://cs.nyu.edu/}
+                            {Computer Science}
+        \item Minor in \href{http://math.nyu.edu/}
+                            {Mathematics}
+         \item Minor in \href{http://hebrewjudaic.as.nyu.edu/}
+                            {Hebrew Language \& Literature}
+        \item Research Adviser:
+              \href{http://chemistry.fas.nyu.edu/object/zlatkobacic.html}
+                   {Professor Zlatko Ba\v{c}i\'c}
+        \item Research:
+              Equilibrium and vibrationally-averaged structure of small molecular clusters as well as clusters of H$_{2}$ in water clathrates for potential use for hydrogen storage.
+              \end{innerlist}
+
+\end{outerlist}
+
+\section{Appointments}
+%
+\href{http://www.nyu.edu/}{\textbf{New York University}}, \href{http://cas.nyu.edu/}{\emph{College of Arts \& Science}},
+New York, NY USA
+\begin{innerlist}
+\item NYU Postdoctoral and Transition Program for Academic Diversity Fellowship \\
+	\href{http://csmr.as.nyu.edu/page/home}{Center for Soft Matter Research}, \href{http://physics.nyu.edu}{Physics Department}, 
+	Fall 2011- 
+\end{innerlist}
+
+
+\section{International Experience} 
+{Visiting Research Scholar}
+\begin{innerlist}
+\item \href{http://www.nottingham.ac.uk/~ppzjpg/About.html}{Juan Garrahan's} Research Group
+\item March-April 2010
+\item \href{http://www.nottingham.ac.uk/physics/index.aspx}{School of Physics \& Astronomy}, \href{http://www.nottingham.ac.uk/}{University of Nottingham}, Nottingham, UK
+\end{innerlist}
+
+
+%\section{Other} 
+%{Hacker Schooler}
+%\begin{innerlist}
+%\item \href{http://www.hackerschool.com}{Hacker School}
+%\item June 2012-August 2012 (Summer 2012 Batch)
+%\item Self-taught programming workshop.
+%\end{innerlist}
+
+
+\section{Publications} \begin{bibsection}
+
+    \item Elmatad, Y.~S and R.~L.~Jack. Space-time Phase Transitions in the East Model with a Softened Kinetic Constraint.   {\emph{J. Chem. Phys.}}, \textbf{138}, 12A531, 2013. 
+
+    \item Elmatad, Y.~S and A.~S.~Keys. Manifestations of Dynamical Facilitation in Glassy Materials.  \href{http://pre.aps.org/abstract/PRE/v85/i6/e061502}{\emph{Phys..~Rev.~E} \textbf{85,} 061502, 2012.}
+
+    \item Elmatad, Y.~S. Fragile-to-Strong Crossover in Supercooled Liquids Remains Elusive.  \href{http://www.pnas.org/content/108/26/E230.full}{\emph{Proc.~Natl.~Acad.~Sci.} \textbf{108,} E230, 2011.}
+
+    \item Elmatad, Y.~S., D.~Chandler, and J.~P.~Garrahan. Corresponding States of Structural Glass Formers II. \href{http://pubs.acs.org/doi/abs/10.1021/jp1076438}{\emph{J.~Phys.~Chem. B} \textbf{114,} 17113-17119, 2010.}
+
+    \item Elmatad, Y.~S., R.~L.~Jack, D.~Chandler, and J.~P.~Garrahan. Finite-temperature Critical Point of a Glass Transition. \href{http://www.pnas.org/content/107/29/12793.short}{\emph{Proc.~Natl.~Acad.~Sci.} \textbf{107,} 12793-12798, 2010.}
+
+    \item Elmatad, Y.~S., D.~Chandler, and J.~P.~Garrahan. Corresponding States of Structural Glass Formers. \href{http://pubs.acs.org/doi/abs/10.1021/jp810362g}{\emph{J.~Phys.~Chem. B} \textbf{113,} 5563-5567, 2009.}
+
+    \item Elmatad, Y.~S., M.~Zitolo, D.~Fera, and A.~Jerschow. Examining Gas Kinetics in MATLAB. \href{http://chemeducator.org/papers/0012002/12070089aj.htm}{\emph{Chem. Educator} \textbf{12,} 89-93, 2007.}    
+    
+    \item Sebastianelli, F., M.~Xu, Y.~S.~Elmatad, J.~W.~Moskowitz and Z.~Ba\v{c}i\'c. Hydrogen Molecules in the Small Dodecahedral Cage of a Clathrate Hydrate: Quantum Translation-Rotation Dynamics of the Confined Molecules. \href{http://pubs.acs.org/doi/abs/10.1021/jp067318j}{\emph{J.~Phys.~Chem.~C} \textbf{111,} 2497-2504, 2007.}    
+
+    \item Xu, M., Y.~S.~Elmatad, F.~Sebastianelli, J.~W.~Moskowitz and Z.~Ba\v{c}i\'c. Hydrogen Molecules in the Small Dodecahedral Cage of a Clathrate Hydrate: Quantum Five-dimensional Calculations of the Coupled Translation-rotation Eigenstates. \href{http://pubs.acs.org/cgi-bin/abstract.cgi/jpcbfk/2006/110/i49/abs/jp066437w.html}{\emph{J.~Phys. Chem.~B} \textbf{110,} 24806-24811, 2006.}        
+
+    \item Sebastianelli, F. Y.~S.~Elmatad, H.~Jiang, and Z.~Ba\v{c}i\'c. HF in Clusters of Molecular Hydrogen: II. Quantum solvation by H$_{2}$ Isotopomers, Cluster Rigidity, and Comparison with CO-doped Parahydrogen Clusters.  \href{http://link.aip.org/link/?JCPSA6/125/164313/1}{\emph{J.~Chem.~Phys} \textbf{125,} 164313, 2006.}    
+\end{bibsection}
+
+
+
+\section{Presentations}
+
+{``Amorphous Glassy Materials: Solids or Liquids?''}
+\begin{innerlist}
+\item {\emph{Invited}}, \href{http://cas.nyu.edu/docs/CP/738/ScholarsLectureBrochure_2012-13.pdf}{NYU}, College of Arts and Science Scholars Lecture, March 2013.
+\item New York, NY\\
+\end{innerlist}
+
+{\href{http://bit.ly/PjDtvK}{``The Glass Transition: A Facilitation Perspective''}}
+\begin{innerlist}
+\item {\emph{Invited}}, \href{http://www.columbia.edu/cu/chemistry/groups/pchem/index.html}{Columbia University}, Physical Chemistry Seminar Series, October 2012.
+\item New York, NY\\
+\end{innerlist}
+
+
+{``Manifestations of dynamical facilitation in glassy materials ''}
+\begin{innerlist}
+\item Presentation at \href{http://meetings.aps.org/Meeting/MAR12/Event/159305}{American Physical Society} Meeting, March 2012
+\item Boston, MA\\
+\end{innerlist}
+
+{``Finite-temperature critical point of a glass transition''}
+\begin{innerlist}
+\item Presentation at \href{http://meetings.aps.org/Meeting/MAR11/Event/143773}{American Physical Society} Meeting, March 2011
+\item Dallas, TX\\
+\end{innerlist}
+
+{``\href{http://www.youthradio.org/news/brains-beakers-diy-robot-hands}{Jamming and the glass transition'}'
+\begin{innerlist}
+\item Presentation for \href{http://youthradio.org}{Youth Radio}
+\item Oakland, CA \\
+\end{innerlist}
+
+
+{``Letting go of the reins: 
+A finite temperature critical point 
+in a glass-former model''}
+\begin{innerlist}
+\item Presentation to \href{http://www.weizmann.ac.il/chemphys/cfprocac/}{Itamar Procaccia Research Group}, April 2010 
+\item \href{http://www.weizmann.ac.il/}{Weizmann Institute} Rehovot, Israel\\
+\end{innerlist}
+
+\href{http://gold.cchem.berkeley.edu/statmech/}{Mini Statistical Mechanics Meeting}
+\begin{innerlist}
+\item Poster Presenter, January 2007, 2008, 2009, 2010, 2011 
+\item \href{http://www.berkeley.edu}{UC Berkeley} Berkeley, CA\\
+\end{innerlist}
+
+``Dynamic phase transitions in glass former models''
+\begin{innerlist}
+\item Graduate Research Conference
+\item Presentation to \href{http://chemistry.berkeley.edu/}{College of Chemistry}, April 2008 
+\item \href{http://www.berkeley.edu}{UC Berkeley} Berkeley, CA\\
+\end{innerlist}
+
+{Workshop on Metastability and Rare Events in Complex Systems}
+\begin{innerlist}
+\item Poster Presenter, February 2008
+\item \href{http://www.esi.ac.at/}{The Erwin Schr\"odinger Institute}, Vienna, Austria
+\end{innerlist}
+
+
+
+
+\section{National Awards}
+%
+\href{http://www.onr.navy.mil/}{Office of Naval Research}
+\begin{innerlist}
+\item \href{http://ndseg.asee.org/}
+           {NDSEG, Graduate Fellowship}, 2007-2010 \\
+\end{innerlist}
+
+\href{http://www.energy.gov/}{Department of Energy}
+\begin{innerlist}
+\item \href{http://www.krellinst.org/csgf/}
+           {Computational Science Graduate Fellowship}, 2007 (Declined) \\
+\end{innerlist}
+
+\href{http://www.nsf.gov/}{National Science Foundation}
+\begin{innerlist}
+\item \href{http://www.nsf.gov/grfp}
+           {Graduate Research Fellowship}, 2006-2011\\
+\end{innerlist}
+
+\href{http://www.gatesfoundation.org/}{The Bill \& Melinda Gates Foundation}
+\begin{innerlist}
+\item \href{http://www.gatesscholar.org/}
+           {Gates Cambridge Scholarship}, 2006 (Declined)\\
+\end{innerlist}
+
+\href{http://www.iotasigmapi.info/}{Iota Sigma Pi: National Honor Society for Women in Chemistry}
+\begin{innerlist}
+\item \href{http://www.iotasigmapi.info/ISPstudentawards/ISPstudentawardees.htm}
+           {Undergraduate Award for Excellence in Chemistry}, 2006
+\item Awarded to one graduating female chemistry undergraduate in the United States per year.           \\
+\end{innerlist}
+
+\href{http://www.act.org/goldwater/}{Barry M. Goldwater Scholarship and Excellence in Education Program}
+\begin{innerlist}
+\item Scholarship Recipient, 2005-2006\\
+\end{innerlist}
+
+\href{http://www.beckman-foundation.com/}{Arnold \& Mabel Beckman Foundation}
+\begin{innerlist}
+\item 
+           \href{http://www.beckman-foundation.com/bsp.html#}{Beckman Scholar}, 2004-2005\\
+\end{innerlist}
+
+\href{http://www.nsf.gov/}{National Science Foundation}
+\begin{innerlist}
+\item 
+           \href{http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=5517&from=fund}{Research Experience for Undergraduates (REU)}, 2004-2005
+\end{innerlist}
+
+\section{University Awards}
+%
+\href{http://www.nyu.edu/}{\textbf{New York University}}, \href{http://fas.nyu.edu/}{\emph{Faculty of Arts \& Science}},
+New York, NY USA
+\begin{innerlist}
+\item NYU Postdoctoral and Transition Program for Academic Diversity Fellowship \\(Fall 2011)\\
+\end{innerlist}
+
+\href{http://www.berkeley.edu/}{\textbf{University of California, Berkeley}},
+Berkeley, CA USA
+\begin{innerlist}
+\item Outstanding Graduate Student Instructor, 2008 \\
+\end{innerlist}
+
+\href{http://www.nyu.edu/}{\textbf{New York University}}, \href{http://cas.nyu.edu/}{\emph{College of Arts \& Science}},
+New York, NY USA
+\begin{innerlist}
+\item Roland P. Beattie  Memorial Award presented to class Valedictorian, 2006
+\item Phi Beta Kappa/Albert Borgman Prize for Best Honors Thesis in the Sciences, 2006
+\item Chemistry Departmental Scholar Award, 2006
+%\item Dean's Undergraduate Research Conference Honorable Mention for Natural Sciences, 2006
+\item George Granger Brown Scholar in Chemistry, 2005
+\item Chemistry Department Research Conference Award Recipient, 2005
+\item Lillian Lindhardt-Solotoroff Award, 2005
+\item President's Service Award in Leadership (Personal), 2005
+\item President's Service Award in Programming (with Draper Chemical Society), 2005
+\item Chemistry Department Research Fellow, 2004
+\item New York State Applied Spectroscopy Society Undergraduate Award, 2004
+\item Dean's Undergraduate Research Fund Scholar, 2004
+\item Sokol Freshman Chemistry Scholar, 2002
+\item Thomas Sweeney Scholarship, 2002-2006
+\item Presidential Honors Scholar, 2002-2006
+\item Dean's List 2002-2006
+\end{innerlist}
+
+
+
+
+
+
+
+
+\section{Honor Societies}
+%
+\href{http://www.iotasigmapi.info/}{Iota Sigma Pi: National Honor Society for Women in Chemistry}
+\begin{innerlist}
+\item Inducted 2006 \\
+\end{innerlist}
+
+\href{https://www.pbk.org/home/index.aspx}{Phi Beta Kappa}
+\begin{innerlist}
+\item Inducted 2005 \\
+\end{innerlist}
+
+\href{http://philambdaupsilon.org/}{Phi Lambda Upsilon: National Chemistry Honor Society}
+\begin{innerlist}
+\item Inducted 2004 
+\end{innerlist}
+
+\section{Leadership}
+%
+\href{http://www.cchem.berkeley.edu/iota/index.html}{Iota Sigma Pi (ISP), Hydrogen Chapter at UC Berkeley}
+\begin{innerlist}
+\item President, 2008-2009 and 2010-2011
+\item Vice President, 2009-2010
+\item ISP at UC Berkeley is a women's organization for chemists. We focus on career development events as well outreach projects to the UC community as well as the community at large.  Events include women's tea hours where professors as well as women in industry come to speak to our group and brown bag lunches with female faculty members.  We have worked with Girls Inc. of Alameda county to recruit volunteers for their afterschool programs for 4th grade girls.  We also organize graduate-undergraduate mentorship programs at UC Berkeley.\\
+\end{innerlist}
+
+\href{http://www.drapersociety.org/}{NYU Draper Chemical Society}
+\begin{innerlist}
+\item President 2005-2006
+\item Secretary 2004-2005
+\item The Draper Society is the undergraduate chemistry society at NYU.  I was one of the founding members of the society in 2004 and it's first secretary.  I created and planned an undergraduate research fair which highlighted opportunities for research across disciplines.  This event is now held yearly and for our efforts our group received a President's Service Award for programming.  I created a partnership with a local high school that sent NYU students to act as classroom assistants.  Additionally, we held a regular seminar where professors presented their work to our group. We also held workshops geared towards students interested in pursuing graduate studies.  My work with the Draper Society earned me a President's Service Award for Leadership.\\
+\end{innerlist}
+
+\href{http://philambdaupsilon.org/}{Phi Lambda Upsilon, Alpha Lambda Chapter at NYU}
+\begin{innerlist}
+\item Vice President 2005-2006
+\item Secretary 2004-2005 
+\item Phi Lambda Upsilon is the national honor society in chemistry.  Our group mostly worked with the Draper Society to put on joint programs.  We also coordinated an upperclassman-freshman mentorship program.\\
+\end{innerlist}
+
+\href{http://www.nyu.edu/clubs/model.un/}{NYU Model United Nations (MUN)}
+\begin{innerlist}
+\item President 2005-2006
+\item Treasurer 2003-2005 
+\item{As the treasurer of the MUN team I was responsible for handling all of the group's finances. This included handling the funding we received from the university to attend our two yearly national MUN conference (one at UPenn and one at Harvard).  I trained members in parliamentary procedure and submitted budget proposals to ensure that our club continued to be funded. As the President, I acted as head delegate during conferences.} 
+\end{innerlist}
+
+\section{Teaching Experience}
+\href{http://www.nyu.edu/}{\textbf{New York University}},
+New York, NY USA
+\begin{outerlist}
+
+\item[] \textit{Professor}%
+      \begin{innerlist}
+        \item Phys 140: Thermodynamics \& Statistical Physics (Spring 2012 \& 2013)
+ 	\item Phys 123: Quantum Mechanics I (Fall 2012)\\
+    \end{innerlist}
+\end{outerlist}
+
+
+
+\href{http://www.berkeley.edu/}{\textbf{University of California, Berkeley}},
+Berkeley, CA USA
+\begin{outerlist}
+
+\item[] \textit{Graduate Student Instructor (GSI)}%
+      \begin{innerlist}
+        \item Chem 220A: Thermodynamics and Statistical Mechanics (Graduate Level)
+        \begin{innerlist}
+            \item Fall 2009 with \href{http://www.cchem.berkeley.edu/plggrp/index.php}{Professor Phillip Geissler}
+            \item Was the sole teaching assistant for 50+ student graduate level course.  Responsible for weekly discussion session, holding office hours, transcribing lectures to post as notes for students on the course website, grading problem sets and exams, and writing solution sets.  Responsible for presenting several lectures on internal molecular partition functions when Professor Geissler was out of town.  Was also responsible for introducing new graduate students to computer programming.
+        \end{innerlist}~
+
+        \item Chem 120B:  Physical Chemistry (Undergraduate Level Thermodynamics \& Statistical Mechanics)
+        \begin{innerlist}
+            \item Fall 2007 with \href{http://gold.cchem.berkeley.edu}
+                   {Professor David Chandler}                    
+            \item Was one of two teaching assistants for a class of about 70 students.  Responsibilities included: grading exams and problem sets, holding discussion session and office hours, transcribing lectures to post as notes for students on the course website, and writing solution sets.
+            \item Received an Outstanding Graduate Student Instructor Award from UC Berkeley for my work in this course.
+                   \end{innerlist}~
+
+        \item Chem 4A: General Chemistry and Quantitative Analysis (Undergraduate Level)
+        \begin{innerlist}
+            \item Fall 2006 with \href{http://www.cchem.berkeley.edu/mhggrp/Head-Gordon_Home.html}{Professor Martin Head-Gordon} and \href{http://chem.berkeley.edu/faculty/moretto/index.php}{Professor Luciano Moretto}
+            \item Responsibilities included: 4h/week laboratory sections, grading lab reports and exams, and holding exam reviews and office hours.
+        \end{innerlist}~
+    \end{innerlist}
+\end{outerlist}
+
+\href{http://www.nyu.edu/}{\textbf{New York University}},
+New York, NY USA
+\begin{outerlist}
+
+\item[] \textit{Teaching Assistant (TA)}%
+      \begin{innerlist}
+        \item Chem V25.0651 \& V25.0652: Physical Chemistry I \& II (Undergraduate Level Quantum \& Statistical Mechanics)
+        \begin{innerlist}
+            \item Fall 2004 \& Spring 2005 with \href{http://chemistry.fas.nyu.edu/object/zlatkobacic.html}
+                   {Professor Zlatko Ba\v{c}i\'c} \& \href{http://chemistry.fas.nyu.edu/object/pauljgans.html}{Professor Paul Gans}
+            \item Introductory level of quantum mechanics (Fall) and thermodynamics and statistical mechanics (Spring) for 3rd and 4th year undergraduates.         
+            \item One of two TAs for course of about 60 students. Responsibilities included: grading exams and problem sets, holding weekly discussion session, and holding office hours.
+        \end{innerlist}
+        \end{innerlist}
+
+\item[] \textit{Clinic Instructor}%
+      \begin{innerlist}
+        \item Chem V25.0125 \& V25.0126: General Chemistry I \& II (Undergraduate Level)
+        \begin{innerlist}
+            \item Fall 2003 \& Spring 2004 with \href{http://chemistry.fas.nyu.edu/object/johnhalpin.html}{Professor John Halpin}
+            \item Responsibilities included: holding weekly clinic sessions where students worked collaboratively in groups to solve problem sets. Was also responsible for writing the problem sets used during these clinic sessions.       \end{innerlist}
+        \end{innerlist}
+        
+\end{outerlist}
+
+\section{Other}
+\href{http://www.hackerschool.com/}{\textbf{Hacker School}},
+Brooklyn, NY USA
+\begin{outerlist}
+
+\item[] \textit{Attendee, Summer 2012}%
+      \begin{innerlist}
+        \item Three month computer science workshop (``writers' retreat for hackers").  Focused on high performance computing (parallel programming) as well as investigated data science topics.
+    \end{innerlist}
+\end{outerlist}
+
+
+\section{Community Service}
+%
+
+\href{http://wins.cas.nyu.edu/page/home}{Women in Science (WINS), New York University },
+2011-Present
+\begin{innerlist}
+\item Mentor female undergraduates majoring in science and technology fields.  
+.\end{innerlist}
+
+\blankline
+
+
+\href{http://www.girlsinc.org/index.html}{Girls Inc.},
+\href{http://www.girlsinc-alameda.org/programs/4th-and-5th-grades}{Girls Inc. of Alameda County, SMART Program}, 2008-2009
+\begin{innerlist}
+\item Volunteered biweekly with Girls Inc. working with 4th graders in an Oakland, CA public school.  SMART is an afterschool program that seeks to foster an interest in science and mathematics in young girls.  As a volunteer, I worked with the instructor to encouraged young girls to be interested in scientific inquiry by teaching them about our environment and performing experiments with them. 
+\item This project was spearheaded by Iota Sigma Pi, the women honor's society in chemistry where we recruited about 15 volunteers to participate.\end{innerlist}
+
+\blankline
+
+\href{http://schools.nyc.gov/SchoolPortals/01/M448/default.htm}{University Neighborhood High School}, NYC 2004-2006
+\begin{innerlist}
+\item Volunteered weekly as a tutor in a chemistry classroom for high school students in a low-income neighborhood.  Personally initiated the program as well as organized students through the \href{http://www.drapersociety.org/}{NYU Draper Chemical Society} to go on various days of the week.  In total, about 20 volunteers went weekly to the school to help the teacher with demonstrations, lessons, and the students with problem sets.
+\item Additionally, volunteered with the school's Model United Nations team along with a few other members of the \href{http://www.nyu.edu/clubs/model.un/}{NYU Model United Nations} team.  Helped students with their position papers for the \href{http://www.unausa.org/modelun}{UNA-USA Model UN} conference at the UN during weekly meetings.  Also, acted as a chaperone for the students when they visited the UN to participate in the conference.
+\end{innerlist}
+
+\blankline
+
+\href{http://www.door.org/}{The Door}, NYC 2002-2004
+\begin{innerlist}
+\item After school tutor for low-income students, many of whom were recent immigrants.  Volunteered weekly helping students with homework, mostly in science and math.
+\item Placement at The Door through the NYU \href{http://cas.nyu.edu/page/ug.studentlife.servicecorps}{Dean's Service Honor Corps}
+\end{innerlist}
+
+%\section{Technical Skills}
+%
+%C, C$+$$+$, Java, Fortran, Matlab, Mathematica, Python, UNIX
+%        shell scripting, GNU make, VCS (SVN), \LaTeX{}, Vi and others 
+
+%\section{Application Areas}
+%
+%FIELDS I LIKE
+
+\section{References}
+%
+Available upon request
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

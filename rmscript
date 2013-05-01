@@ -11,3 +11,11 @@ rm Cover_Letter_For_Job.synctex.gz
 rm Cover_Letter_For_Job.log
 rm Cover_Letter_For_Job.aux
 
+rm combine_all_four.aux
+rm combine_all_four.log
+rm combine_all_four.synctex.gz
+
+rm CV.aux
+rm CV.log
+rm CV.synctex.gz
+rm CV.out
